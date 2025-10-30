@@ -48,5 +48,10 @@ while True:
                 print(cur.fetchall())
             case 4:
                 id_del = int(input("Enter the ID of the record to delete: "))
+                cur.execute("DELETE FROM Names WHERE ID == ?", (id_del))
+                conn.commit()
+                print("Succesfully deleted the record, if it exists.")
+            case 5:
+                break
     except:
         print("Invalid input.")
