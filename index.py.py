@@ -39,7 +39,7 @@ while True:
                     print(row)
             case 2:
                 new_record = input("Input your record separated by commas (no whitespace): ")
-                x = new_record.strip.split(',')
+                x = new_record.strip().split(',')
                 cur.execute("INSERT INTO Names (ID, FName, Surname, PNumber) VALUES (?, ?, ?, ?)", (int(x[0]), x[1], x[2], x[3]))
                 conn.commit()
             case 3:
@@ -48,10 +48,10 @@ while True:
                 print(cur.fetchall())
             case 4:
                 id_del = int(input("Enter the ID of the record to delete: "))
-                cur.execute("DELETE FROM Names WHERE ID == ?", (id_del))
+                cur.execute("DELETE FROM Names WHERE ID == ?", (id_del,))
                 conn.commit()
                 print("Succesfully deleted the record, if it exists.")
             case 5:
                 break
-    except:
-        print("Invalid input.")
+    except Exception as e:
+        print("Error:", e)
