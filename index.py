@@ -44,7 +44,7 @@ while True:
                 conn.commit()
             case 3:
                 sur_search = input("Input the surname (case sensitive): ")
-                cur.execute("SELECT Surname FROM Names WHERE Surname == ?", (sur_search,)) #the comma after sur_search is because the parameter MUST be a tuple
+                cur.execute("SELECT * FROM Names WHERE Surname == ?", (sur_search,)) #the comma after sur_search is because the parameter MUST be a tuple
                 print(cur.fetchall())
             case 4:
                 id_del = int(input("Enter the ID of the record to delete: "))
